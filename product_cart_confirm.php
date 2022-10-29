@@ -1,6 +1,12 @@
-<?php
-session_start();
-include("condb.php");
+<?php session_start(); 
+include('condb.php');
+ 
+  $ID = $_SESSION['ID'];
+  $name = $_SESSION['name'];
+  $level = $_SESSION['level'];
+ 	if($level!='admin'){
+    Header("Location: ../logout.php");  
+  }  
 ?>
 <html>
 

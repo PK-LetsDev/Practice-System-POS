@@ -1,6 +1,15 @@
-<?php
-session_start();
+<?php session_start(); 
 include('condb.php');
+ 
+  $ID = $_SESSION['ID'];
+  $name = $_SESSION['name'];
+  $level = $_SESSION['level'];
+ 	if($level!='admin'){
+    Header("Location: ../logout.php");  
+  }  
+?>
+<?php
+
 $ID = $_SESSION['p_id'];
 
 $p_id = mysqli_real_escape_string($con, $_GET['p_id']);

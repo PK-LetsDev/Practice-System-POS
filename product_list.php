@@ -1,6 +1,16 @@
 <?php
 include('h.php');
 ?>
+<?php session_start(); 
+include('condb.php');
+ 
+  $ID = $_SESSION['ID'];
+  $name = $_SESSION['name'];
+  $level = $_SESSION['level'];
+ 	if($level!='admin'){
+    Header("Location: ../logout.php");  
+  }  
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +39,7 @@ include('h.php');
 //1. เชื่อมต่อ database:
 include('condb.php');  //ไฟล์เชื่อมต่อกับ database ที่เราได้สร้างไว้ก่อนหน้าน้ี
 //2. query ข้อมูลจากตาราง 
-$query = "SELECT * FROM tbl_product ORDER by p_id " or die("Error:" . mysqli_error());
+$query = "SELECT * FROM tbl_product ORDER by p_id " ;
 
 //3.เก็บข้อมูลที่ query ออกมาไว้ในตัวแปร result .
 $result = mysqli_query($con, $query);
